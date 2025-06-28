@@ -39,7 +39,6 @@ const apiKey = "92000ba1463a3debe9a9d31c1138fb93";
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
         }
-
     }
     
 searchBtn.addEventListener("click", () => {
