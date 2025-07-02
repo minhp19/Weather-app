@@ -9,6 +9,14 @@ body {
     background: #222;
 }
 
+.loading {
+  display: none;
+  text-align: center;
+  color: #888;
+  margin-top: 10px;
+}
+
+
 .card {
     width: 90%;
     max-width: 470px;
@@ -104,5 +112,5 @@ body {
     font-size: 14px;
     margin-top: 10px;
     display: none;
-    
+
 }

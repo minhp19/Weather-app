@@ -6,15 +6,18 @@ const apiKey = "92000ba1463a3debe9a9d31c1138fb93";
     const weatherIcon = document.querySelector(".weather-icon");
     
     async function checkWeather(city) {
-        const response = await fetch (apiUrl +  city + `&appid=${apiKey}`);
-        
-        if (response.status == 404) {
-            document.querySelector(".error").style.display = "block";
-            document.querySelector(".weather").style.display = "none";
-        } else {
-            
-        let data = await response.json();
+    document.getElementById("loading").style.display = "block"; // Hiện loading
 
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+    document.getElementById("loading").style.display = "none"; // Tắt loading
+
+    if (response.status == 404) {
+        document.querySelector(".error").style.display = "block";
+        document.querySelector(".weather").style.display = "none";
+    } else {
+        let data = await response.json();
+ 
         document.querySelector(".city").innerHTML = data.name;
         document.querySelector(".temp").innerHTML = Math.round (data.main.temp) + "°c";
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
@@ -44,3 +47,11 @@ const apiKey = "92000ba1463a3debe9a9d31c1138fb93";
 searchBtn.addEventListener("click", () => {
     checkWeather(searchBox.value);
 })
+
+searchBox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        checkWeather(searchBox.value);
+    }
+});
+
+
